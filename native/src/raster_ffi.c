@@ -9,6 +9,7 @@
 
 /* stb implementations (single-file libraries) */
 #define STB_IMAGE_IMPLEMENTATION
+#define STBI_NO_HDR  /* Disable HDR to avoid __isoc23_strtol glibc symbol */
 #include "stb_image.h"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
