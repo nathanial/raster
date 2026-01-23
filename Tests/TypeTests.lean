@@ -56,6 +56,6 @@ test "empty image is created correctly" := do
   img.height ≡ 3
   img.data.size ≡ 0
 
-#generate_tests
+
 
 end Tests.TypeTests

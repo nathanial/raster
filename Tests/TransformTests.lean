@@ -122,6 +122,6 @@ test "fill changes all pixels" := do
     pixel[2]? ≡ some 64
   | none => shouldSatisfy false "filled pixel should exist"
 
-#generate_tests
+
 
 end Tests.TransformTests
