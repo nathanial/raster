@@ -30,6 +30,20 @@ def Image.setPixel (img : Image) (x y : Nat) (values : List UInt8) : Image :=
       return data
     { img with data := newData }
 
+/-- Map over pixels, preserving image dimensions and format. -/
+def Image.mapPixels (img : Image) (f : List UInt8 → List UInt8) : Image :=
+  let channels := img.format.channels
+  let newData := Id.run do
+    let mut data : ByteArray := .empty
+    for i in [:img.width * img.height] do
+      let idx := i * channels
+      let pixel := List.range channels |>.map fun c => img.data.get! (idx + c)
+      let newPixel := f pixel
+      for c in [:channels] do
+        data := data.push (newPixel.getD c 0)
+    return data
+  { img with data := newData }
+
 /-- Get red channel (for RGB/RGBA images) -/
 def Image.getRed (img : Image) (x y : Nat) : Option UInt8 :=
   if img.format == .rgb || img.format == .rgba then

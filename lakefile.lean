@@ -7,6 +7,7 @@ package raster where
 
 require crucible from git "https://github.com/nathanial/crucible" @ "v0.0.9"
 require staple from git "https://github.com/nathanial/staple" @ "v0.0.2"
+require tincture from git "https://github.com/nathanial/tincture" @ "v0.0.2"
 
 @[default_target]
 lean_lib Raster where
